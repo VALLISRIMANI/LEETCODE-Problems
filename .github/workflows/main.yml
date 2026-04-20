@@ -11,8 +11,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Push LeetCode solutions to GitHub
-        uses: leetpush/leetpush@v2
+      - name: LeetCode Sync
+        uses: qishibo/LeetCode-Solution-Sync@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          root-folder: leetcode
+          commit-message: "Add LeetCode solutions"
