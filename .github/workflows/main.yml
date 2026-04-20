@@ -8,12 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Sync LeetCode submissions
-        uses: joshcai/leetcode-sync@main
+      - name: Push LeetCode solutions to GitHub
+        uses: leetpush/leetpush@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
-          commit-message: "Add LeetCode solutions"
