@@ -11,9 +11,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: LeetCode Sync
-        uses: joshcai/leetcode-sync@v1
+      - name: Sync LeetCode submissions
+        uses: joshcai/leetcode-sync@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
-          commit-message: "Add LeetCode solution"
+          commit-message: "Add LeetCode solutions"
