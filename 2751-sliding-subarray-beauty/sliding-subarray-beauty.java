@@ -3,41 +3,25 @@ class Solution {
         int n = nums.length;
         int[] res = new int[n - k + 1];
         int[] freq = new int[51]; 
-
         for (int i = 0; i < k; i++) {
-            if (nums[i] < 0) {
-                freq[-nums[i]]++;
-            }
+            if (nums[i] < 0) freq[-nums[i]]++;
         }
-        
         res[0] = getXthSmallestNegative(freq, x);
-
         for (int i = k; i < n; i++) {
-            if (nums[i - k] < 0) {
-                freq[-nums[i - k]]--;
-            }
-
-            if (nums[i] < 0) {
-                freq[-nums[i]]++;
-            }
-
+            if (nums[i - k] < 0) freq[-nums[i - k]]--;
+            if (nums[i] < 0) freq[-nums[i]]++;
             res[i - k + 1] = getXthSmallestNegative(freq, x);
         }
-
         return res;
     }
-
     private int getXthSmallestNegative(int[] freq, int x) {
         int count = 0;
-
         for (int val = 50; val >= 1; val--) { 
             count += freq[val];
-
             if (count >= x) {
                 return -val;
             }
         }
-
         return 0;
     }
 }
