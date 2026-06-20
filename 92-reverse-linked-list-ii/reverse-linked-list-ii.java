@@ -19,7 +19,7 @@ class Solution {
         for (int i = 1; i < left; i++) {
             prev = prev.next;
         }
-
+        
         ListNode curr = prev.next;
         ListNode next = null;
         ListNode prevSub = null;
@@ -31,8 +31,8 @@ class Solution {
             curr = next;
         }
 
-        prev.next.next = curr;  
-        prev.next = prevSub;   
+        prev.next.next = curr;
+        prev.next = prevSub;
 
         return dummy.next;
     }
