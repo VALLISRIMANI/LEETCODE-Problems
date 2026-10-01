@@ -9,6 +9,7 @@ class Solution {
         return sb.toString();
     }
 
+    /*
     public StringBuilder sum(String s, int k) {
         int n = s.length();
         StringBuilder sb = new StringBuilder();
@@ -33,6 +34,27 @@ class Solution {
                 sb.append(sum);
             }
 
+            idx += k;
+        }
+
+        return sb;
+    }
+    */
+
+    public StringBuilder sum(String s, int k) {
+        int n = s.length();
+        StringBuilder sb = new StringBuilder();
+        int idx = 0;
+
+        while (idx < n) {
+            int sum = 0;
+            int limit = Math.min(idx + k, n);
+
+            for (int i = idx; i < limit; i++) {
+                sum += s.charAt(i) - '0';
+            }
+
+            sb.append(sum);
             idx += k;
         }
 
