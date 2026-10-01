@@ -1,63 +1,22 @@
 class Solution {
     public String digitSum(String s, int k) {
-        StringBuilder sb = new StringBuilder(s);
+        while (s.length() > k) {
+            StringBuilder next = new StringBuilder();
 
-        while (sb.length() > k) {
-            sb = sum(sb.toString(), k);
-        }
-
-        return sb.toString();
-    }
-
-    /*
-    public StringBuilder sum(String s, int k) {
-        int n = s.length();
-        StringBuilder sb = new StringBuilder();
-        int idx = 0;
-
-        while (idx < n) {
-            if (idx + k < n) {
+            for (int i = 0; i < s.length(); i += k) {
                 int sum = 0;
+                int end = Math.min(i + k, s.length());
 
-                for (int i = idx; i < idx + k; i++) {
-                    sum += s.charAt(i) - '0';
+                for (int j = i; j < end; j++) {
+                    sum += s.charAt(j) - '0';
                 }
-
-                sb.append(sum);
-            } else {
-                int sum = 0;
-
-                for (int i = idx; i < n; i++) {
-                    sum += s.charAt(i) - '0';
-                }
-
-                sb.append(sum);
+                
+                next.append(sum);
             }
 
-            idx += k;
+            s = next.toString();
         }
 
-        return sb;
-    }
-    */
-
-    public StringBuilder sum(String s, int k) {
-        int n = s.length();
-        StringBuilder sb = new StringBuilder();
-        int idx = 0;
-
-        while (idx < n) {
-            int sum = 0;
-            int limit = Math.min(idx + k, n);
-
-            for (int i = idx; i < limit; i++) {
-                sum += s.charAt(i) - '0';
-            }
-
-            sb.append(sum);
-            idx += k;
-        }
-
-        return sb;
+        return s;
     }
 }
