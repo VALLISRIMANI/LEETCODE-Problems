@@ -1,20 +1,23 @@
 class Solution {
     public boolean isValidSerialization(String preorder) {
         String[] nodes = preorder.split(",");
-        int slots = 1;
+        List<String> stack = new ArrayList<>();
 
         for (String node : nodes) {
-            slots -= 1;
+            stack.add(node);
 
-            if (slots < 0) {
-                return false;
-            }
-
-            if (!node.equals("#")) {
-                slots += 2;
+            while (stack.size() >= 3 
+                    && stack.get(stack.size() - 1).equals("#")
+                    && stack.get(stack.size() - 2).equals("#")
+                    && !stack.get(stack.size() - 3).equals("#")
+            ) {
+                    stack.remove(stack.size() - 1);
+                    stack.remove(stack.size() - 1);
+                    stack.remove(stack.size() - 1);
+                    stack.add("#");
             }
         }
 
-        return slots == 0;
+        return stack.size() == 1 && stack.get(0).equals("#");
     }
 }
